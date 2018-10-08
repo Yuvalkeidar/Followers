@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../JS/script.js"></script>
+	<title>Users</title>
+</head>
+<body>
+	<div class="container spacer-top">
+	  <h1>Welcome <?php echo $username['user_name']; ?></h1>
+	  <h3>Choose users to follow:</h3>
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>User id:</th>
+	        <th>Name:</th>
+	        <th>Group Name:</th>
+	        <th>Number of followers:</th>
+	        <th>Follow:</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<?php for($i=0; $i<count($data);$i++) { ?>
+		      <tr>
+		      	<td class="user_id"><?php echo $data[$i]['user_id']; ?></td>
+		        <td class="user_name"><?php echo $data[$i]['user_name']; ?></td>
+		        <td class="group_name"><?php echo $data[$i]['group_name']; ?></td>
+		        <td class="follow_num"><?php echo $data[$i]['follow_num']; ?></td>
+		        <td class="follow">   
+					<div class="ck-button">
+					   	<?php if(!isset($data[$i]['follower_id'])) { ?>
+				        	<input type="checkbox" class="follow-checkbox" id="<?php echo "follow-checkbox".$i ?>" />
+					   	<?php } else { ?>
+				        	<input type="checkbox" class="follow-checkbox follow-checked" id="<?php echo 'follow-checkbox'.$i ?>" />
+					   	<?php } ?>
+						<label class="follow-checkbox-text" for="<?php echo 'follow-checkbox'.$i ?>" >Follow</label>
+					</div>
+				</td>
+		      </tr>
+	    	<?php } ?>
+	    </tbody>
+	  </table>
+	</div>
+</body>
+</html>
